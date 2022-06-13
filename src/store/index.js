@@ -1,11 +1,6 @@
-import Vue from "vue";
-import Vuex from "vuex";
+import mockBooks from "@/mock/books.json"
+import mockAuthors from "@/mock/authors.json"
+import { reactive, ref } from "vue";
 
-Vue.use(Vuex);
-
-export default new Vuex.Store({
-  state: {},
-  mutations: {},
-  actions: {},
-  modules: {},
-});
+export const books = reactive(mockBooks);
+export const authors = ref(mockAuthors);

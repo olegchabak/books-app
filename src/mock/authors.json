@@ -1,0 +1,73 @@
+[
+  {
+    "name": "Александр Пушкин",
+    "fullName": "Александр Сергеевич Пушкин",
+    "gender": "male",
+    "date of birth": "6 июня 1799",
+    "photo": "https://i.livelib.ru/auface/004215/100x100/127d/Aleksandr_Pushkin.jpg",
+    "country": "Россия",
+    "books": [
+      "Сказка о царе Салтане",
+      "Повести Белкина (сборник)",
+      "Евгений Онегин",
+      "Барышня-крестьянка",
+      "Сказка о мёртвой царевне и о семи богатырях"
+    ]
+  },
+  {
+    "name": "Стивен Кинг",
+    "fullName": "Stephen Edwin King",
+    "gender": "male",
+    "date of birth": "21 сентября 1947 г.",
+    "photo": "https://i.livelib.ru/auface/000048/100x100/cfac/Stiven_King.jpg",
+    "country": "USA",
+    "books": [
+      "Билли Саммерс",
+      "Оно",
+      "Спящие красавицы. Том 1",
+      "Кто нашел, берет себе",
+      "Бессонница",
+      "Зелёная миля"
+    ]
+  },
+  {
+    "name": "Уилл Прайс",
+    "fullName": "Will Pryce",
+    "gender": "male",
+    "date of birth": "",
+    "photo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRyKp1IkpKQczDCXWSIvQjOx4-mZPt1-dl4t9s2PVIPew&s",
+    "country": "UK",
+    "books": [
+      "Всемирная история библиотек",
+      "Big Shed",
+      "Архитектура в дереве"
+    ]
+  },
+  {
+    "name": "Джеймс Кэмпбелл",
+    "fullName": "Dr James W P Campbell",
+    "gender": "male",
+    "date of birth": "",
+    "photo": "https://www.queens.cam.ac.uk/sites/www.queens.cam.ac.uk/files/styles/acw/public/profiles/campbell.jpg?itok=9PbOBpeR",
+    "country": "",
+    "books": [
+      "Всемирная история библиотек",
+      "Write Your Own Funny Stories"
+    ]
+  },
+  {
+    "name": "Джоан Роулинг",
+    "fullName": "Joanne Rowling",
+    "gender": "female",
+    "date of birth": "31 июля 1965 г.",
+    "photo": "https://u.livelib.ru/author/1000179700/r/riztenmr/001372a9ae2709532a4b12-r.jpg",
+    "country": "UK",
+    "books": [
+      "Гарри Поттер. Год с волшебством",
+      "Рождественский поросёнок",
+      "Гарри Поттер и Орден Феникса",
+      "Икабог",
+      "Гарри Поттер и Кубок Огня"
+    ]
+  }
+]
