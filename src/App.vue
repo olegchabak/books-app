@@ -1,34 +1,14 @@
 <script setup>
-import HomePage from "@/components/pages/HomePage.vue";
-import AuthorsPage from "@/components/pages/AuthorsPage.vue";
-import BooksPage from "@/components/pages/BooksPage.vue";
-import NotFound from "@/components/pages/NotFound.vue";
 import AppHeader from "@/components/AppHeader.vue";
 import AppFooter from "@/components/AppFooter.vue";
-import { computed, ref } from "vue";
 
-const routes = {
-  "/": HomePage,
-  "/authors": AuthorsPage,
-  "/books": BooksPage,
-};
-
-const currentPath = ref(window.location.hash);
-
-window.addEventListener("hashchange", () => {
-  currentPath.value = window.location.hash;
-});
-
-const currentView = computed(() => {
-  return routes[currentPath.value.slice(1) || "/"] || NotFound;
-});
 </script>
 
 <template>
   <div class="app-wrapper">
     <AppHeader />
     <div class="page-container">
-      <component :is="currentView" />
+      <router-view></router-view>
     </div>
     <AppFooter />
   </div>
@@ -49,9 +29,12 @@ body {
 }
 
 .page-container {
+  box-sizing: border-box;
   position: relative;
   flex-grow: 1;
-  width: 1200px;
+  width: 100%;
+  padding: 0 15px;
+  max-width: 1200px;
   margin: auto;
 }
 
@@ -92,5 +75,13 @@ ul {
   padding: 15px 30px;
   box-shadow: 1px 1px 15px #eee;
   border-radius: 6px;
+  transition: box-shadow 0.25s;
+}
+
+.go-back {
+  margin-top: 30px;
+  &__link {
+    text-decoration: none;
+  }
 }
 </style>

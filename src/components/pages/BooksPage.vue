@@ -20,20 +20,25 @@ function deleteBook(book) {
       <ul class="list books">
         <li v-for="book in books" :key="book.ISBN" class="list-item book">
           <a href="#" @click.prevent="deleteBook(book)" class="delete">
-            <img src="@/assets/img/delete.svg" alt="">
+            <img src="@/assets/img/delete.svg" alt="delete" />
           </a>
-          <h2>{{ book.name }}</h2>
-          <div class="book-header">
-            <img :src="book.image" :alt="book.name" class="book-image"/>
-            <p><span v-text="book.authors.join(', ')" /></p>
-            <p>Цена: {{ book.price }}</p>
-            <p>ISBN: {{ book.ISBN }}</p>
-            <p v-if="book.category.length">Жанр: <span v-text="book.category.join(', ')"/></p>
-            <p v-if="book.tags.length" class="tags">
-              Теги: <small v-for="tag in book.tags" :key="tag">{{tag}}</small>
-            </p>
-          </div>
-          <p class="book-description">{{ book.shortDescription }}</p>
+          <router-link
+            :to="{ name: 'BookPage', params: { code: book.code } }"
+            class="book-inner"
+          >
+            <h2>{{ book.name }}</h2>
+            <div class="book-header">
+              <img :src="book.image" :alt="book.name" class="book-image"/>
+              <p><span v-text="book.authors.join(', ')" /></p>
+              <p>Цена: {{ book.price }}</p>
+              <p>ISBN: {{ book.ISBN }}</p>
+              <p v-if="book.category.length">Жанр: <span v-text="book.category.join(', ')"/></p>
+              <p v-if="book.tags.length" class="tags">
+                Теги: <small v-for="tag in book.tags" :key="tag">{{tag}}</small>
+              </p>
+            </div>
+            <p class="book-description">{{ book.shortDescription }}</p>
+          </router-link>
         </li>
       </ul>
       <div id="endList"></div>
@@ -48,6 +53,8 @@ function deleteBook(book) {
 
 .book {
   &:hover {
+    cursor: pointer;
+    box-shadow: 2px 2px 30px #bbb;
     .delete {
       opacity: 0.5;
       &:hover {
@@ -55,6 +62,12 @@ function deleteBook(book) {
       }
     }
   }
+}
+
+.book-inner {
+  display: block;
+  text-decoration: none;
+  color: inherit;
 }
 
 .book-image {
@@ -67,7 +80,7 @@ function deleteBook(book) {
 
 .book-description {
   display: -webkit-box;
-  -webkit-line-clamp: 10;
+  -webkit-line-clamp: 7;
   -webkit-box-orient: vertical;
   overflow: hidden;
   font-style: italic;
@@ -80,6 +93,7 @@ function deleteBook(book) {
   width: 16px;
   height: 16px;
   opacity: 0;
+  transition: all 0.25s;
 }
 
 .tags {

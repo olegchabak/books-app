@@ -1,25 +1,28 @@
 <template>
   <header class="app-header">
-    <div class="page-container">
+    <div class="page-container menu-wrap">
       <ul class="header-links">
         <li>
-          <a href="#/" class="header-link">Home</a>
+          <router-link to="/" class="header-link">Home</router-link>
         </li>
         <li>
-          <a href="#/authors" class="header-link">Authors</a>
+          <router-link to="/authors" class="header-link">Authors</router-link>
         </li>
         <li>
-          <a href="#/books" class="header-link">Books</a>
+          <router-link :to="{ name: 'BooksPage' }" class="header-link"
+            >Books</router-link
+          >
         </li>
       </ul>
+      <router-link :to="{ name: 'ProfileHome' }" class="header-link">Profile</router-link>
     </div>
   </header>
 </template>
 
 <script>
 export default {
-  name: "AppHeader"
-}
+  name: "AppHeader",
+};
 </script>
 
 <style lang="scss">
@@ -38,5 +41,19 @@ export default {
   display: inline-block;
   padding: 10px 0;
   margin-right: 30px;
+  text-decoration: none;
+}
+.router-link-active {
+  color: cadetblue;
+  text-decoration: underline;
+}
+.router-link-exact-active {
+  color: darkgreen;
+  cursor: default;
+}
+
+.menu-wrap {
+  display: flex;
+  justify-content: space-between;
 }
 </style>
