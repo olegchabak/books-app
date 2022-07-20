@@ -7,7 +7,7 @@ import AppFooter from "@/components/AppFooter.vue";
 <template>
   <div class="app-wrapper">
     <AppHeader />
-    <div class="page-container">
+    <div class="page-container page-content">
       <router-view></router-view>
     </div>
     <AppFooter />
@@ -51,12 +51,17 @@ ul {
   margin: 0;
 }
 
+h1 {
+  margin-top: 0;
+}
+
 .page-content {
+  padding-top: 30px;
 }
 
 .list {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
   grid-gap: 30px;
 }
 
@@ -64,11 +69,12 @@ ul {
   position: relative;
 }
 
-.page-wrapper {
+.head-wrapper {
   height: 100%;
-  display: grid;
-  grid-template-columns: auto 350px;
-  grid-gap: 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
 }
 
 .list-item {

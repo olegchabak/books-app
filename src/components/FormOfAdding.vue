@@ -41,9 +41,7 @@ const onSubmit = () => {
 
 <style lang="scss">
 .adding-form {
-  position: sticky;
-  top: 90px;
-
+  max-width: 500px;
   &__fieldset {
     padding: 15px 30px;
     display: flex;

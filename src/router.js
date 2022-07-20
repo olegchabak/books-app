@@ -9,6 +9,8 @@ import ProfileUser from "@/components/pages/profile/ProfileUser.vue";
 import ProfileOrders from "@/components/pages/profile/ProfileOrders.vue";
 import ProfileFavorites from "@/components/pages/profile/ProfileFavorites.vue";
 import ProfileOptions from "@/components/pages/profile/ProfileOptions.vue";
+import AddingBook from "@/components/pages/AddingBook.vue"
+import AddingAuthor from "@/components/pages/AddingAuthor.vue"
 
 const routes = [
   {
@@ -25,6 +27,16 @@ const routes = [
     path: "/authors",
     name: "AuthorsPage",
     component: () => import(/* webpackChunkName: "AuthorsPage" */ "@/components/pages/AuthorsPage.vue"),
+  },
+  {
+    path: "/books/add-book",
+    name: "AddingBook",
+    component: AddingBook,
+  },
+  {
+    path: "/authors/add-author",
+    name: "AddingAuthor",
+    component: AddingAuthor,
   },
   {
     path: "/books/:code",
@@ -91,9 +103,7 @@ const router = createRouter({
   linkExactActiveClass: "router-link-exact-active", // default
   scrollBehavior: (to, from, savedPosition) => {
     // по дефолту сохраняет скролл прошлой страницы
-    // всегда скролл вверх
     console.log(to, from, savedPosition);
-    return { top: 0 };
     // всегда прокручивать 10 пикселей над элементом #main
     // return {
     //   // could also be
@@ -102,12 +112,14 @@ const router = createRouter({
     //   top: -10,
     // };
     // c плавной прокруткой до нужного якоря
-    // if (to.hash) {
-    //   return {
-    //     el: to.hash,
-    //     behavior: "smooth",
-    //   };
-    // }
+    if (to.hash) {
+      return {
+        el: to.hash,
+        behavior: "smooth",
+      };
+    }
+    // всегда скролл вверх
+    return { top: 0 };
   },
   // parseQuery / stringifyQuery: () => {/* функции парсинга/сериализации query */}
   fallback: false, // default

@@ -1,9 +1,11 @@
 <script setup>
-import FormOfAdding from "@/components/FormOfAdding.vue"
 import { ref } from "vue";
-const emit = defineEmits(["addAuthor"]);
-const errorMessage = ref("");
+import FormOfAdding from "@/components/FormOfAdding.vue"
+import SuccessOfAdding from "@/components/SuccessOfAdding.vue";
+import { authors } from "@/store"
 
+const authorIsAdding = ref(false);
+const errorMessage = ref("");
 const name = ref("");
 const fullName = ref("");
 const dateOfBirth = ref("");
@@ -22,7 +24,8 @@ const addAuthor = () => {
       books: books.value?.split("|").map((i) => i.trim()),
     };
     validate(author);
-    emit("addAuthor", author);
+    authors.value.push(author);
+    authorIsAdding.value = true;
   } catch (error) {
     console.error(error);
     errorMessage.value = error.message;
@@ -48,7 +51,9 @@ const validate = (author) => {
 </script>
 
 <template>
+  <SuccessOfAdding v-if="authorIsAdding" entity-name="Автор" page-name="AuthorsPage" />
   <FormOfAdding
+    v-else
     @submit="addAuthor"
     :errorMessage="errorMessage"
     legendText="Добавить автора:"
