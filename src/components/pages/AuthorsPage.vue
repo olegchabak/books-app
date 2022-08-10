@@ -1,5 +1,5 @@
 <script setup>
-import { authors } from "@/store"
+import { authors } from "@/store/catalog";
 const getGender = (g) => (g === "female" ? "Женщина" : "Мужчина");
 </script>
 

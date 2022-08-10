@@ -2,7 +2,7 @@
 import { ref } from "vue";
 import FormOfAdding from "@/components/FormOfAdding.vue";
 import SuccessOfAdding from "@/components/SuccessOfAdding.vue";
-import { books } from "@/store";
+import { books } from "@/store/catalog";
 
 const bookIsAdding = ref(false);
 const errorMessage = ref("");

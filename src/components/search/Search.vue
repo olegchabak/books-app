@@ -1,7 +1,7 @@
 <script setup>
 import { computed, ref, watch } from "vue";
-import { books } from "@/store";
-import SearchResult from "@/components/search/SearchResult.vue"
+import { books } from "@/store/catalog";
+import SearchResult from "@/components/search/SearchResult.vue";
 
 const OPTION_NAME = { text: "По названию", value: "name" };
 const OPTION_AUTHOR = { text: "По автору книги", value: "authors" };

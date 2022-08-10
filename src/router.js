@@ -11,6 +11,7 @@ import ProfileFavorites from "@/components/pages/profile/ProfileFavorites.vue";
 import ProfileOptions from "@/components/pages/profile/ProfileOptions.vue";
 import AddingBook from "@/components/pages/AddingBook.vue"
 import AddingAuthor from "@/components/pages/AddingAuthor.vue"
+import CartPage from "@/components/pages/CartPage.vue"
 
 const routes = [
   {
@@ -81,6 +82,11 @@ const routes = [
         component: ProfileOptions,
       },
     ],
+  },
+  {
+    path: "/cart",
+    name: "CartPage",
+    component: CartPage,
   },
   {
     path: "/redirect-test",

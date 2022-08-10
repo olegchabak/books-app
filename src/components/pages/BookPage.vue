@@ -1,6 +1,6 @@
 <script setup>
 import { useRoute } from "vue-router";
-import { books } from "@/store";
+import { books } from "@/store/catalog";
 import { computed, onMounted, watch } from "vue";
 import Recommendation from "@/components/Recommendation.vue";
 

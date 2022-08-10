@@ -1,8 +1,8 @@
 <script setup>
 import { ref } from "vue";
-import FormOfAdding from "@/components/FormOfAdding.vue"
+import FormOfAdding from "@/components/FormOfAdding.vue";
 import SuccessOfAdding from "@/components/SuccessOfAdding.vue";
-import { authors } from "@/store"
+import { authors } from "@/store/catalog";
 
 const authorIsAdding = ref(false);
 const errorMessage = ref("");
