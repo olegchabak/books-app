@@ -1,8 +1,13 @@
 <script setup>
 import { computed, ref, watch } from "vue";
-import { updateCartItem, cart } from "@/store/cart";
+import { storeToRefs } from "pinia";
+import { useCartStore } from "@/stores/cart";
 import IconBase from "@/components/icons/IconBase.vue";
 import IconCart from "@/components/icons/IconCart.vue";
+
+const store = useCartStore();
+const { cart } = storeToRefs(store);
+const { updateCartItem } = store;
 
 const emit = defineEmits(["deleteBook"]);
 

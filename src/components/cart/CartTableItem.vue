@@ -1,7 +1,10 @@
 <script setup>
 import { computed } from "vue";
-import { deleteCartItem } from "@/store/cart";
+import { useCartStore } from "@/stores/cart";
 import AppCounter from "@/components/common/AppCounter.vue";
+
+const store = useCartStore();
+const { deleteCartItem } = store;
 
 const props = defineProps({
   item: {
@@ -11,7 +14,7 @@ const props = defineProps({
 });
 
 const sumPrice = computed(() => {
-  return props.item.count * props.item.price
+  return props.item.count * props.item.price;
 });
 
 function deleteFromCart() {

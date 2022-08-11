@@ -1,6 +1,10 @@
 <script setup>
+import { storeToRefs } from "pinia";
+import { useCatalogStore } from "@/stores/catalog";
 import BookCard from "@/components/BookCard.vue";
-import { books } from "@/store/catalog";
+
+const store = useCatalogStore();
+const { books } = storeToRefs(store);
 
 function deleteBook(book) {
   const index = books.indexOf(book);

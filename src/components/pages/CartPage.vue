@@ -1,3 +1,13 @@
+<script setup>
+import { storeToRefs } from "pinia";
+import { useCartStore } from "@/stores/cart";
+import CartTableItem from "@/components/cart/CartTableItem.vue";
+
+const store = useCartStore();
+const { cart, totalPrice, totalCount } = storeToRefs(store);
+const { deleteAll } = store;
+</script>
+
 <template>
   <h1>Корзина</h1>
   <template v-if="cart && cart.length">
@@ -38,11 +48,6 @@
     </p>
   </template>
 </template>
-
-<script setup>
-import { cart, totalPrice, totalCount, deleteAll } from "@/store/cart";
-import CartTableItem from "@/components/cart/CartTableItem.vue";
-</script>
 
 <style lang="scss">
 .cart-table {

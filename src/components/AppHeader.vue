@@ -1,9 +1,13 @@
 <script setup>
+import { computed } from "vue";
+import { storeToRefs } from "pinia";
+import { useCartStore } from "@/stores/cart";
 import IconBase from "@/components/icons/IconBase.vue";
 import IconCart from "@/components/icons/IconCart.vue";
 import IconProfile from "@/components/icons/IconProfile.vue";
-import { computed } from "vue";
-import { cart } from "@/store/cart";
+
+const store = useCartStore();
+const { cart } = storeToRefs(store);
 
 const countGoodsInCart = computed(() => cart.value.length);
 </script>

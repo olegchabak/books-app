@@ -1,6 +1,9 @@
 <script setup>
-import { updateCartItem as updateCartItemInStore } from "@/store/cart";
+import { useCartStore } from "@/stores/cart";
 import { ref } from "vue";
+
+const store = useCartStore();
+const { updateCartItem: updateCartItemInStore } = store;
 
 const inputRef = ref(null);
 

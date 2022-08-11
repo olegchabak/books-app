@@ -1,5 +1,10 @@
 <script setup>
-import { authors } from "@/store/catalog";
+import { useCatalogStore } from "@/stores/catalog";
+import { storeToRefs } from "pinia";
+
+const store = useCatalogStore();
+const { authors } = storeToRefs(store);
+
 const getGender = (g) => (g === "female" ? "Женщина" : "Мужчина");
 </script>
 
