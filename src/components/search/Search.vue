@@ -1,7 +1,11 @@
 <script setup>
 import { computed, ref, watch } from "vue";
-import { books } from "@/store";
-import SearchResult from "@/components/search/SearchResult.vue"
+import { storeToRefs } from "pinia";
+import { useCatalogStore } from "@/stores/catalog";
+import SearchResult from "@/components/search/SearchResult.vue";
+
+const store = useCatalogStore();
+const { books } = storeToRefs(store);
 
 const OPTION_NAME = { text: "По названию", value: "name" };
 const OPTION_AUTHOR = { text: "По автору книги", value: "authors" };
@@ -38,14 +42,14 @@ const lastSearchStr = ref("");
 const searchResult = ref([]);
 
 function getFilteredBooksByName() {
-  return books.filter((book) => {
+  return books.value.filter((book) => {
     const bookName = book[selectedOption.value].toLowerCase();
     return bookName.includes(searchStr.value.toLowerCase());
   });
 }
 
 function getFilteredBooksByCategoryOrAuthor() {
-  return books.filter((book) => {
+  return books.value.filter((book) => {
     const selectedOptionArr = book[selectedOption.value];
     for (const el of selectedOptionArr) {
       if (el.toLowerCase().includes(searchStr.value.toLowerCase())) return true;
@@ -74,7 +78,7 @@ const onInputRange = () => {
 
   const minValue = +searchFrom.value ?? 0;
   const maxValue = +searchTo.value || Infinity;
-  searchResult.value = books.filter(
+  searchResult.value = books.value.filter(
     (book) => book.price >= minValue && book.price <= maxValue
   );
 };

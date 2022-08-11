@@ -1,8 +1,12 @@
 <script setup>
-import { useRoute } from "vue-router";
-import { books } from "@/store";
 import { computed, onMounted, watch } from "vue";
+import { useRoute } from "vue-router";
+import { storeToRefs } from "pinia";
+import { useCatalogStore } from "@/stores/catalog";
 import Recommendation from "@/components/Recommendation.vue";
+
+const store = useCatalogStore();
+const { books } = storeToRefs(store);
 
 const route = useRoute();
 const props = defineProps(["code"]);

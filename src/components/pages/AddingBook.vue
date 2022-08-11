@@ -1,8 +1,12 @@
 <script setup>
 import { ref } from "vue";
+import { storeToRefs } from "pinia";
 import FormOfAdding from "@/components/FormOfAdding.vue";
 import SuccessOfAdding from "@/components/SuccessOfAdding.vue";
-import { books } from "@/store";
+import { useCatalogStore } from "@/stores/catalog";
+
+const store = useCatalogStore();
+const { books } = storeToRefs(store);
 
 const bookIsAdding = ref(false);
 const errorMessage = ref("");
@@ -30,7 +34,7 @@ const addBook = () => {
       tags: tags.value?.split("|").map((i) => i.trim()),
     };
     validate(book);
-    books.push(book);
+    books.value.push(book);
     bookIsAdding.value = true;
   } catch (error) {
     console.error(error);

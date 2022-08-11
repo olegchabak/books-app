@@ -1,3 +1,17 @@
+<script setup>
+import { computed } from "vue";
+import { storeToRefs } from "pinia";
+import { useCartStore } from "@/stores/cart";
+import IconBase from "@/components/icons/IconBase.vue";
+import IconCart from "@/components/icons/IconCart.vue";
+import IconProfile from "@/components/icons/IconProfile.vue";
+
+const store = useCartStore();
+const { cart } = storeToRefs(store);
+
+const countGoodsInCart = computed(() => cart.value.length);
+</script>
+
 <template>
   <header class="app-header">
     <div class="page-container menu-wrap">
@@ -14,16 +28,28 @@
           >
         </li>
       </ul>
-      <router-link :to="{ name: 'ProfileHome' }" class="header-link">Profile</router-link>
+      <ul class="header-links">
+        <li>
+          <router-link :to="{ name: 'ProfileHome' }" class="header-link">
+            <icon-base icon-name="Profile" class="header-links__icon">
+              <icon-profile />
+            </icon-base>
+            Profile
+          </router-link>
+        </li>
+        <li>
+          <router-link :to="{ name: 'CartPage' }" class="header-link relative">
+            <span v-if="countGoodsInCart" class="count-goods-in-cart">{{ countGoodsInCart }}</span>
+            <icon-base icon-name="Cart" class="header-links__icon">
+              <icon-cart />
+            </icon-base>
+            Cart
+          </router-link>
+        </li>
+      </ul>
     </div>
   </header>
 </template>
-
-<script>
-export default {
-  name: "AppHeader",
-};
-</script>
 
 <style lang="scss">
 .app-header {
@@ -36,12 +62,17 @@ export default {
 }
 .header-links {
   display: flex;
+  &__icon {
+    margin-right: 5px;
+  }
 }
 .header-link {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
   padding: 10px 0;
-  margin-right: 30px;
   text-decoration: none;
+  line-height: 1;
+  margin-right: 30px;
 }
 .router-link-active {
   color: cadetblue;
@@ -55,5 +86,20 @@ export default {
 .menu-wrap {
   display: flex;
   justify-content: space-between;
+}
+
+.count-goods-in-cart {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 8px;
+  background: orangered;
+  color: white;
+  border-radius: 500px;
+  line-height: 0;
+  padding: 7px 5px;
+  position: absolute;
+  left: 10px;
+  top: 1px;
 }
 </style>

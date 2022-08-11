@@ -1,8 +1,12 @@
 <script setup>
 import { ref } from "vue";
-import FormOfAdding from "@/components/FormOfAdding.vue"
+import FormOfAdding from "@/components/FormOfAdding.vue";
 import SuccessOfAdding from "@/components/SuccessOfAdding.vue";
-import { authors } from "@/store"
+import { useCatalogStore } from "@/stores/catalog";
+import { storeToRefs } from "pinia";
+
+const store = useCatalogStore();
+const { authors } = storeToRefs(store);
 
 const authorIsAdding = ref(false);
 const errorMessage = ref("");
